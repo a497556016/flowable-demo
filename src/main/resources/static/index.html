@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>流程图</title>
+</head>
+<body>
+    <div style="text-align: center">
+        <button type="button" id="changeStateButton" class="btn btn-sm btn-default" style="display:none">改变状态</button>
+    </div>
+    <div id="loadingBar" style="text-align: center">加载中，请稍候... ...</div>
+    <div id="bpmnModel" style="margin-left:auto;margin-right:auto"></div>
+    <script src="lib/jquery/jquery.js"></script>
+    <script type="text/javascript">
+        console.log(window.location.search);
+
+
+        const process = {
+            // id: '56eeb9da-2b82-11ea-a437-1e85de2061ed',
+            processDefinitionId: 'TestProcess:1:92f55b78-2b76-11ea-a8f8-6c92bf89c3be',
+            // serverId: 'cb86f99a-25ff-11ea-8c9a-1e85de2061ed',
+            // endTime: undefined,
+            // ended: true
+        }
+
+        if(window.location.search){
+            const options = window.location.search.substr(1).split("&");
+            const params = {};
+            options.forEach(option => {
+                const values = option.split("=");
+                if(values.length === 2) {
+                    params[values[0]] = values[1];
+                }
+            });
+            if(params.processInstanceId) {
+                process.id = params.processInstanceId;
+            }
+            if(params.processDefinitionId) {
+                process.processDefinitionId = params.processDefinitionId;
+            }
+            if(params.endTime) {
+                process.endTime = params.endTime;
+            }
+        }
+
+        $("#bpmnModel").attr("data-instance-id", process.id);
+        $("#bpmnModel").attr("data-definition-id", process.processDefinitionId);
+        $("#bpmnModel").attr("data-server-id", process.serverId);
+        if (process.endTime != undefined || process.ended) {
+            $("#bpmnModel").attr("data-history-id", process.id);
+        }
+        $("#bpmnModel").load("./lib/display/displaymodel.html?instanceId=" + process.id);
+    </script>
+</body>
+</html>

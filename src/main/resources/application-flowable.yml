@@ -1,0 +1,19 @@
+flowable:
+  idm:
+    password-encoder: spring_delegating_bcrypt
+  server-config:
+    server-address: http://localhost
+    port: 7008
+    context-root:
+    rest-root: process-api
+    user-name: heshaowei
+    password: 123456
+  mail:
+    server:
+      default-from: heshaowei_code@163.com
+      use-ssl: false
+      host: smtp.163.com
+      port: 25
+      username: heshaowei_code
+      password: hshw469319743
+
