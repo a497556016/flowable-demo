@@ -137,6 +137,9 @@ public class BaseFlowService {
     }
 
     public ProcessInstance startProcessWithForm(String processDefKey, String startUserId, Map<String, Object> variables, String processInstanceName) {
+        if(null == startUserId) {
+            startUserId = UserUtil.getLoginUsername();
+        }
         identityService.setAuthenticatedUserId(startUserId);
 
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionKey(processDefKey).latestVersion().singleResult();

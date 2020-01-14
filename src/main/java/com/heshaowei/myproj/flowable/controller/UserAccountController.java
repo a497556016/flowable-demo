@@ -1,5 +1,6 @@
 package com.heshaowei.myproj.flowable.controller;
 
+import com.heshaowei.myproj.flowable.common.GlobalConstant;
 import org.flowable.engine.IdentityService;
 import org.flowable.idm.api.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/user")
+@RequestMapping(GlobalConstant.API_VERSION+"/user")
 @RestController
 public class UserAccountController {
     @Autowired
