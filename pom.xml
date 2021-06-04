@@ -24,7 +24,7 @@
         <guava.version>27.0.1-jre</guava.version>
 <!--        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>-->
         <flowable.version>6.4.2</flowable.version>
-        <httpclient.version>4.5.10</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
     </properties>
 
     <dependencies>
